@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications - Greenville Roleplay Republic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #202225; /* Discord gray background */
+            color: #ffffff; /* White text for contrast */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #202225; /* Darker gray for the header */
+            color: #ffffff;
+            padding: 15px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            width: 100%;
+            position: absolute; /* Keep header at top */
+            top: 0; /* Align at the top */
+        }
+
+        h1 {
+            font-size: 5rem; /* Big text */
+            margin: 0;
+            text-align: center;
+            color: #ffd06a; /* Highlight color */
+        }
+
+        p {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        /* Side Menu Styles */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Hide offscreen */
+            width: 250px;
+            height: 100%;
+            background-color: #202225; /* Darker gray for the menu */
+            transition: left 0.3s ease; /* Smooth slide in/out effect */
+            z-index: 999; /* Ensure menu is above other content */
+            padding: 10px 0; /* Add some padding */
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .side-menu.active {
+            left: 0; /* Show the menu */
+        }
+
+        .menu-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            cursor: pointer;
+            color: #ffffff;
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .menu-button:hover {
+            color: #ffd06a; /* Highlight color on hover */
+        }
+
+        .menu-option {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .menu-option:hover {
+            background-color: #202225; /* Darker hover effect */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <h1>Applications</h1>
+    </header>
+
+    <div class="side-menu" id="sideMenu">
+        <a href="home.html" class="menu-option">Home</a>
+        <a href="tos.html" class="menu-option">Terms of Service</a>
+    </div>
+
+    <h1>Coming Soon</h1>
+    <p>Stay tuned for updates on our applications!</p>
+
+    <footer>
+        <p>© 2024 Greenville Roleplay Republic. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Side Menu Toggle
+        function toggleMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const isActive = sideMenu.classList.toggle('active');
+            sideMenu.style.left = isActive ? '0' : '-250px'; // Slide in/out
+
+            // Add or remove event listener based on menu state
+            if (isActive) {
+                document.addEventListener('click', outsideClickListener);
+            } else {
+                document.removeEventListener('click', outsideClickListener);
+            }
+        }
+
+        // Close menu when clicking outside
+        function outsideClickListener(event) {
+            const sideMenu = document.getElementById('sideMenu');
+            const menuButton = document.querySelector('.menu-button');
+
+            if (!sideMenu.contains(event.target) && !menuButton.contains(event.target)) {
+                toggleMenu(); // Close the menu
+            }
+        }
+    </script>
+</body>
+
+</html>

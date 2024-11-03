@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenville Roleplay Republic - Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full viewport height */
+            display: flex; /* Use flexbox to center content */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            background-color: #202225; /* Slightly transparent background */
+            color: #ffd06a; /* White text color */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em; /* Large font size */
+            margin: 0;
+            opacity: 0; /* Start invisible */
+            transition: opacity 0.5s; /* Fade-in transition */
+        }
+        .click-here {
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: transform 0.3s; /* Smooth scale transition */
+        }
+        .click-here:hover {
+            transform: scale(1.05); /* Slightly scale up on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="click-here" id="clickHere">Click Here</h1>
+
+    <script>
+        // Show the "Click Here" message after the page loads
+        window.onload = function() {
+            const clickHere = document.getElementById('clickHere');
+            clickHere.style.opacity = '1'; // Fade in the text
+        };
+
+        // Add click event to the "Click Here" message
+        document.getElementById('clickHere').addEventListener('click', function() {
+            const clickHere = document.getElementById('clickHere');
+            clickHere.textContent = "Loading..."; // Change text to Loading...
+            clickHere.style.opacity = '1'; // Make sure it is visible
+            setTimeout(function() {
+                window.location.href = "home.html"; // Redirect to home.html after 5 seconds
+            }, 5000); // 5000 milliseconds = 5 seconds
+        });
+    </script>
+</body>
+</html>

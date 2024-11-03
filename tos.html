@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Greenville Roleplay Republic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #202225; /* Discord gray background */
+            color: #ffffff; /* White text for contrast */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: #202225; /* Darker gray for the header */
+            color: #ffd06a;
+            padding: 15px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #202225; /* Light gray for the content area */
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #ffd06a;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #202225; /* Darker gray for the footer */
+            color: #ffffff;
+            border-radius: 8px;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Hide offscreen */
+            width: 250px;
+            height: 100%;
+            background-color: #202225; /* Darker gray for the menu */
+            transition: left 0.3s ease; /* Smooth slide in/out effect */
+            z-index: 999; /* Ensure menu is above other content */
+            padding: 10px 0; /* Add some padding */
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .side-menu.active {
+            left: 0; /* Show the menu */
+        }
+
+        .menu-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            cursor: pointer;
+            color: #ffffff;
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .menu-button:hover {
+            color: #ffd06a; /* Highlight color on hover */
+        }
+
+        .menu-option {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .menu-option:hover {
+            background-color: #202225; /* Darker hover effect */
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .menu-button {
+                font-size: 20px;
+            }
+
+            .side-menu {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <h1>Terms of Service</h1>
+    </header>
+
+    <div class="side-menu" id="sideMenu">
+        <a href="home.html" class="menu-option">Home</a>
+        <a href="applications.html" class="menu-option">Applications</a>
+    </div>
+
+    <main>
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using the Greenville Roleplay Republic server, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, you must not use the server.</p>
+
+        <h2>2. Community Conduct</h2>
+        <p>Respect and Tolerance: Treat all members with respect, regardless of their role, background, or beliefs. Harassment, discrimination, or hate speech will not be tolerated.</p>
+        <p>Roleplay Etiquette: Engage in respectful and cooperative roleplay. Avoid disrupting others’ experiences, and always strive to enhance the roleplay environment.</p>
+
+        <h2>3. Age Requirement</h2>
+        <p>Members must be at least 13 years of age to join the server. If you are under the age of 13, you must obtain parental consent.</p>
+
+        <h2>4. Content Guidelines</h2>
+        <p>Appropriate Content: All content shared on the server must be appropriate for the community. This includes messages, images, and roleplay scenarios. Explicit, violent, or otherwise inappropriate content is strictly prohibited.</p>
+        <p>No Spamming: Avoid spamming messages, images, or links. Repetitive or excessive messages can disrupt the flow of conversation and roleplay.</p>
+
+        <h2>5. User Accounts</h2>
+        <p>Account Security: Members are responsible for maintaining the security of their accounts. Do not share your account credentials with others.</p>
+        <p>Single Account Policy: Each member is allowed only one account. Multiple accounts are not permitted and may result in disciplinary action.</p>
+
+        <h2>6. Server Staff Authority</h2>
+        <p>Respect Staff Decisions: Server staff are here to maintain a positive and safe environment. Respect their decisions and directives. If you disagree with a staff decision, please discuss it respectfully in private.</p>
+
+        <h2>7. Disciplinary Actions</h2>
+        <p>Violations of these Terms may result in disciplinary actions, including warnings, temporary bans, or permanent removal from the server.</p>
+    </main>
+
+    <footer>
+        <p>© 2024 Greenville Roleplay Republic. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Side Menu Toggle
+        function toggleMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const isActive = sideMenu.classList.toggle('active');
+            sideMenu.style.left = isActive ? '0' : '-250px'; // Slide in/out
+
+            // Add or remove event listener based on menu state
+            if (isActive) {
+                document.addEventListener('click', outsideClickListener);
+            } else {
+                document.removeEventListener('click', outsideClickListener);
+            }
+        }
+
+        // Close menu when clicking outside
+        function outsideClickListener(event) {
+            const sideMenu = document.getElementById('sideMenu');
+            const menuButton = document.querySelector('.menu-button');
+
+            if (!sideMenu.contains(event.target) && !menuButton.contains(event.target)) {
+                toggleMenu(); // Close the menu if click is outside
+            }
+        }
+    </script>
+</body>
+
+</html>
